@@ -35,4 +35,5 @@ List<AdoroCinemaMovie> upcomingMoviesMonthly = AdoroCinemaMovieSearcher.getUpcom
 - String **genre**
 - String **director**
 - String **imgUrl**: image url for movie poster from Adoro Cinema. ***Be careful:** you may not have authorization to use their images*
+
 More attributes coming soon.
