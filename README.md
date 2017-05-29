@@ -7,23 +7,26 @@ An **unofficial** application for searching movies through Adoro Cinema database
 
 ### Searching for a movie by name
 
-<pre><code>#Get a list of movies based on a movie's name:
-List&#060;AdoroCinemaMovie&#062; searchResults = AdoroCinemaMovieSearcher.getMovieInfo("The Secret Life of Walter Mitty");
-</code></pre>
+```java
+// Get a list of movies based on a movie's name:
+List<AdoroCinemaMovie> searchResults = AdoroCinemaMovieSearcher.getMovieInfo("The Secret Life of Walter Mitty");
+```
 
 ### Get upcoming movies from today on
 
-<pre><code>#Get a list of movies based on movies releasing from today (page 1):
+```java
+// Get a list of movies based on movies releasing from today (page 1):
 int page = 1;
-List&#060;AdoroCinemaMovie&#062; upcomingMoviesFromToday = AdoroCinemaMovieSearcher.getUpcomingMoviesFromToday(page);
-</code></pre>
+List<AdoroCinemaMovie> upcomingMoviesFromToday = AdoroCinemaMovieSearcher.getUpcomingMoviesFromToday(page);
+```
 
 ### Get upcoming movies by month
 
-<pre><code>#Get a list of movies based on movies releasing by month (page 1):
+```java
+// Get a list of movies based on movies releasing by month (page 1):
 int page = 1;
-List&#060;AdoroCinemaMovie&#062; upcomingMoviesMonthly = AdoroCinemaMovieSearcher.getUpcomingMoviesMonthly(page);
-</code></pre>
+List<AdoroCinemaMovie> upcomingMoviesMonthly = AdoroCinemaMovieSearcher.getUpcomingMoviesMonthly(page);
+```
 
 ### AdoroCinemaMovie attributes:
 
