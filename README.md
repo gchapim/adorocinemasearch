@@ -7,23 +7,26 @@ An **unofficial** application for searching movies through Adoro Cinema database
 
 ### Searching for a movie by name
 
-<pre><code>#Get a list of movies based on a movie's name:
+```java
+// Get a list of movies based on a movie's name:
 List<AdoroCinemaMovie> searchResults = AdoroCinemaMovieSearcher.getMovieInfo("The Secret Life of Walter Mitty");
-</code></pre>
+```
 
 ### Get upcoming movies from today on
 
-<pre><code>#Get a list of movies based on movies releasing from today (page 1):
+```java
+// Get a list of movies based on movies releasing from today (page 1):
 int page = 1;
 List<AdoroCinemaMovie> upcomingMoviesFromToday = AdoroCinemaMovieSearcher.getUpcomingMoviesFromToday(page);
-</code></pre>
+```
 
 ### Get upcoming movies by month
 
-<pre><code>#Get a list of movies based on movies releasing by month (page 1):
+```java
+// Get a list of movies based on movies releasing by month (page 1):
 int page = 1;
 List<AdoroCinemaMovie> upcomingMoviesMonthly = AdoroCinemaMovieSearcher.getUpcomingMoviesMonthly(page);
-</code></pre>
+```
 
 ### AdoroCinemaMovie attributes:
 
@@ -35,4 +38,5 @@ List<AdoroCinemaMovie> upcomingMoviesMonthly = AdoroCinemaMovieSearcher.getUpcom
 - String **genre**
 - String **director**
 - String **imgUrl**: image url for movie poster from Adoro Cinema. ***Be careful:** you may not have authorization to use their images*
+
 More attributes coming soon.
