@@ -26,8 +26,8 @@ public class AdoroCinemaMovieSearcher {
 	private static final String ELEMENT_MOVIE = "div.data_box";
 	private static final String ELEMENT_URL_MOVIE = "href";
 	private static final String ELEMENT_DATABOX = "div.meta-body"; 
-	private static final String ELEMENT_DIRECTOR = "meta[itemprop=director]";
-	private static final String ELEMENT_NAME = "meta[itemprop=name]";
+	private static final String ELEMENT_DIRECTOR = "span[itemprop=director]";
+	private static final String ELEMENT_NAME = "span[itemprop=name]";
 	private static final String ELEMENT_GENRE = "span[itemprop=genre]";
 	private static final String ELEMENT_DESCRIPTION = "div[itemprop=description]";
 	private static final String ELEMENT_MOVIE_TABLE ="div.ovw-synopsis-info";
@@ -98,7 +98,7 @@ public class AdoroCinemaMovieSearcher {
 			Element movieBox = null;
 			if(title){
 					
-				Element divTitle = doc.getElementById("col-xs-12");
+				Element divTitle = doc.getElementsByClass("col-xs-12").first();
 				Element metaName = divTitle.select("meta[itemprop=name]").first();
 					
 				if(Util.filled(metaName)){
@@ -122,25 +122,27 @@ public class AdoroCinemaMovieSearcher {
 				
 				//Data de lancamento
 				String date;
-				Element dateBox = movieBox.select("div.meta-body-item").first().getElementsByTag("strong").first();
+				Element dateBox = movieBox.select("div.meta-body-item").first().getElementsByTag("span").last();
 					
-				date = dateBox.getElementsByTag("span").first().html()
+				date = dateBox.html()
 							.replace("\n", "").split("\\(+")[0];
 				acMovie.setRelease(UtilDate.fullDatetoGregorianCalendar(date));
 				
 				//Imagem Poster
-				String imgUrl = doc.select("meta[itemprop=image]").first().attr("src").replaceAll("r_[0-9]{3}_[0-9]{3}", "cx_400_600");
+				String imgUrl = doc.select("img[itemprop=image]").first().attr("src").replaceAll("r_[0-9]{3}_[0-9]{3}", "cx_400_600");
 				acMovie.setImgUrl(imgUrl);
 				
 				
 						
 				//Director
-				Element directorBox = movieBox.select(ELEMENT_DIRECTOR).first().select(ELEMENT_NAME).first();
-
-				if(Util.filled(directorBox)){
-					acMovie.setDirector(directorBox.html());
+				Elements directorsBox = movieBox.select(ELEMENT_DIRECTOR);
+				if(Util.filled(directorsBox)){
+					Elements directorBox = directorsBox.first().select(ELEMENT_NAME);
+	
+					if(Util.filled(directorBox)){
+						acMovie.setDirector(directorBox.first().html());
+					}
 				}
-				
 				//Genre
 				Element genreBox = movieBox.select(ELEMENT_GENRE).first();
 				
